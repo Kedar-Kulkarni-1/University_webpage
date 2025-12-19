@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KK University</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+    /* GLOBAL */
+    body {
+        margin: 0;
+        font-family: 'Poppins', sans-serif;
+        background: linear-gradient(180deg, #f4f6fb, #ffffff);
+        color: #222;
+    }
+    
+    /* STICKY NAVBAR */
+    header {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        background: linear-gradient(90deg, #0a2a66, #123f9c);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+        padding: 15px 0;
+    }
+    
+    nav {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+    }
+    
+    nav a {
+        color: white;
+        text-decoration: none;
+        font-weight: 600;
+        position: relative;
+    }
+    
+    nav a::after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 2px;
+        background: #ffd700;
+        bottom: -5px;
+        left: 0;
+        transition: 0.3s;
+    }
+    
+    nav a:hover::after {
+        width: 100%;
+    }
+    
+    h1 {
+        text-align: center;
+        color: white;
+        margin: 0;
+        font-size: 2.5em;
+    }
+    
+    /* HERO SECTION */
+    .hero {
+        background: url('https://woxsen.edu.in/blog/wp-content/uploads/2023/05/Indias-Most-Beautiful-University_-Woxsen-University.png') center/cover no-repeat;
+        height: 80vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        color: white;
+        position: relative;
+    }
+    
+    .hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(10, 42, 102, 0.6);
+    }
+    
+    .hero h2 {
+        font-size: 3.5em;
+        z-index: 1;
+        animation: fadeSlide 1.4s ease;
+    }
+    
+    .hero p {
+        font-size: 1.5em;
+        z-index: 1;
+        max-width: 800px;
+        margin: 20px;
+    }
+    
+    .hero button {
+        z-index: 1;
+        padding: 15px 40px;
+        font-size: 1.2em;
+        cursor: pointer;
+    }
+    
+    @keyframes fadeSlide {
+        from { opacity: 0; transform: translateY(40px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    
+    /* SECTION STYLES */
+    section {
+        padding: 80px 10%;
+        opacity: 0;
+        transform: translateY(40px);
+        transition: 1s ease;
+    }
+    
+    section.show {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    
+    .section-title {
+        text-align: center;
+        font-size: 2.5em;
+        margin-bottom: 40px;
+        color: #0a2a66;
+    }
+    
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+    }
+    
+    .card {
+        background: white;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        transition: 0.4s;
+        position: relative;
+    }
+    
+    .card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+    }
+    
+    .card::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(120deg, transparent, #ffd700, transparent);
+        opacity: 0;
+        transition: 0.4s;
+    }
+    
+    .card:hover::before {
+        opacity: 0.15;
+    }
+    
+    .card img {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+    }
+    
+    .card h3 {
+        text-align: center;
+        padding: 20px;
+        background: #f9f9f9;
+    }
+    
+    /* STATS */
+    .stats {
+        display: flex;
+        justify-content: center;
+        gap: 50px;
+        flex-wrap: wrap;
+        background: #0a2a66;
+        color: white;
+        padding: 50px;
+        border-radius: 15px;
+        margin: 40px 0;
+    }
+    
+    .stats > div {
+        text-align: center;
+    }
+    
+    .stats h3 {
+        font-size: 3em;
+        margin: 0;
+    }
+    
+    /* BUTTON */
+    button {
+        background: linear-gradient(90deg, #0a2a66, #123f9c);
+        color: white;
+        border: none;
+        border-radius: 30px;
+        padding: 12px 30px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+    
+    button:hover {
+        transform: scale(1.05);
+        background: linear-gradient(90deg, #123f9c, #0a2a66);
+    }
+    
+    /* CONTACT FORM */
+    .contact-form {
+        max-width: 600px;
+        margin: 0 auto;
+        background: white;
+        padding: 40px;
+        border-radius: 15px;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    }
+    
+    input, textarea {
+        width: 100%;
+        padding: 12px;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+    }
+    
+    /* PROGRESS BAR & BACK TO TOP */
+    #progress {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 4px;
+        background: #ffd700;
+        width: 0%;
+        z-index: 2000;
+    }
+    
+    #topBtn {
+        position: fixed;
+        bottom: 25px;
+        right: 25px;
+        background: #0a2a66;
+        color: white;
+        border: none;
+        padding: 15px 18px;
+        border-radius: 50%;
+        font-size: 20px;
+        display: none;
+        cursor: pointer;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
+    
+    #topBtn:hover {
+        background: #ffd700;
+        color: #0a2a66;
+    }
+    
+    footer {
+        background: #0a2a66;
+        color: white;
+        text-align: center;
+        padding: 30px;
+        margin-top: 50px;
+    }
+</style>
+</head>
+
+<body>
+
+<div id="progress"></div>
+
+<header>
+    <h1>KK UNIVERSITY</h1>
+    <nav>
+        <a href="#about">About</a>
+        <a href="#admission">Admissions</a>
+        <a href="#departments">Departments</a>
+        <a href="#research">Research</a>
+        <a href="#facilities">Facilities</a>
+        <a href="#contact">Contact</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <h2>Excellence | Innovation | Leadership</h2>
+    <p>Shaping the future through world-class education, cutting-edge research, and entrepreneurial spirit.</p>
+    <button onclick="document.getElementById('admission').scrollIntoView({behavior: 'smooth'});">Apply Now</button>
+</section>
+
+<section id="about">
+    <h2 class="section-title">About KK University</h2>
+    <div class="card" style="padding:30px;">
+        <p>KK University is a premier institution inspired by global leaders like MIT, dedicated to technology-driven education, entrepreneurship, and research excellence. Located in Pune, Maharashtra, our vibrant campus fosters innovation, industry partnerships, and holistic development. We empower students to tackle real-world challenges and become leaders in their fields.</p>
+        <p>Founded with a vision to bridge academia and industry, we offer state-of-the-art infrastructure, experienced faculty, and a dynamic learning environment.</p>
+    </div>
+    
+    <img src="https://marvel-b1-cdn.bc0a.com/f00000000290162/images.ctfassets.net/2htm8llflwdx/2mKP5dTvcwi8RUABcb6VEP/5fe3aa6f438ba63b96e9f36c639e66e8/Classroom_StudentGroup_Studying_Indoor_GettyImages-679437550.jpg?fit=thumb" alt="Students in classroom" style="width:100%; max-height:500px; object-fit:cover; border-radius:15px; margin-top:30px;">
+</section>
+
+<section>
+    <h2 class="section-title">Key Statistics</h2>
+    <div class="stats">
+        <div>
+            <h3>5000+</h3>
+            <p>Students</p>
+        </div>
+        <div>
+            <h3>300+</h3>
+            <p>Faculty Members</p>
+        </div>
+        <div>
+            <h3>95%</h3>
+            <p>Placement Rate</p>
+        </div>
+    </div>
+</section>
+
+<section id="admission">
+    <h2 class="section-title">Admissions</h2>
+    <div class="card" style="padding:30px;">
+        <p>Admissions at KK University are merit-based, involving entrance examinations and personal interviews. We welcome diverse talents and provide scholarships for deserving candidates.</p>
+        <h3>Programs Offered:</h3>
+        <ul style="line-height:2;">
+            <li><strong>Undergraduate:</strong> B.Tech (CS, AI, Robotics), B.Sc, BBA, B.Des</li>
+            <li><strong>Postgraduate:</strong> M.Tech, MBA, M.Sc, MCA</li>
+            <li><strong>Doctoral:</strong> PhD in Engineering, Management, Sciences</li>
+        </ul>
+        <button onclick="alert('Application form will open in a new window (demo)')">Download Brochure</button>
+    </div>
+</section>
+
+<section id="departments">
+    <h2 class="section-title">Departments</h2>
+    <div class="grid">
+        <div class="card">
+            <img loading="lazy" src="https://media.istockphoto.com/id/597963388/photo/university-students-study-in-a-classroom-with-male-lecturer.jpg?s=612x612&w=0&k=20&c=c4yC47WOBpgzZSs1tpwaFqrwtWxCCbOhnG8IFe1O6Ko=" alt="Computer Science">
+            <h3>Computer Science & AI</h3>
+        </div>
+        <div class="card">
+            <img loading="lazy" src="https://woxsen.edu.in/uploads/A20230612063256.webp" alt="Robotics Lab">
+            <h3>Mechanical & Robotics Engineering</h3>
+        </div>
+        <div class="card">
+            <img loading="lazy" src="https://cs.lbl.gov/wp-content/uploads/2025/05/Autonomous.jpg" alt="Research Lab">
+            <h3>Management Studies</h3>
+        </div>
+    </div>
+</section>
+
+<section id="research">
+    <h2 class="section-title">Research & Innovation</h2>
+    <div class="card" style="padding:30px;">
+        <p>KK University is at the forefront of interdisciplinary research in Artificial Intelligence, Robotics, Renewable Energy, Healthcare Technology, and Sustainable Development. Our dedicated research centers encourage student-faculty collaboration, leading to publications in top journals, patents, and startups.</p>
+        <p>Highlights: Incubation Center, Industry-Sponsored Projects, International Collaborations.</p>
+    </div>
+    <img src="https://cs.lbl.gov/wp-content/uploads/2025/05/Autonomous.jpg" alt="AI Robotics Lab" style="width:100%; max-height:500px; object-fit:cover; border-radius:15px; margin-top:30px;">
+</section>
+
+<section id="facilities">
+    <h2 class="section-title">Campus Facilities</h2>
+    <div class="grid">
+        <div class="card">
+            <img loading="lazy" src="https://woxsen.edu.in/blog/wp-content/uploads/2023/05/How-is-Woxsen-University.png" alt="Central Library">
+            <h3>Central Library & Digital Resources</h3>
+        </div>
+        <div class="card">
+            <img loading="lazy" src="https://woxsen.edu.in/uploads/A20230612063256.webp" alt="Modern Labs">
+            <h3>State-of-the-Art Laboratories</h3>
+        </div>
+        <div class="card">
+            <img loading="lazy" src="https://f005.backblazeb2.com/file/bmpcdn90/academy/20620/bmp_20620_1714887094290.jpg" alt="Sports Ground">
+            <h3>Sports Complex & Gym</h3>
+        </div>
+        <div class="card">
+            <img loading="lazy" src="https://content.jdmagicbox.com/comp/kapurthala/j9/9999p1822.1822.220318222721.g4j9/catalogue/lpu-hostel-ground-kapurthala-sports-ground-0cc3lhme90.jpg" alt="Hostel">
+            <h3>Comfortable Hostels & Cafeteria</h3>
+        </div>
+    </div>
+</section>
+
+<section id="contact">
+    <h2 class="section-title">Contact Us</h2>
+    <div class="contact-form">
+        <form onsubmit="event.preventDefault(); alert('Message sent! (Demo)');">
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+            <textarea rows="5" placeholder="Your Message" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+        <p style="margin-top:30px;"><i class="fas fa-envelope"></i> Email: info@kkuniversity.edu</p>
+        <p><i class="fas fa-phone"></i> Phone: +91 98765 43210</p>
+        <p><i class="fas fa-map-marker-alt"></i> Location: Pune, Maharashtra, India</p>
+    </div>
+</section>
+
+<footer>
+    © 2025 KK University | Academic Demo Project
+</footer>
+
+<button id="topBtn" onclick="goTop()"><i class="fas fa-arrow-up"></i></button>
+
+<script>
+    // Scroll Progress
+    window.addEventListener("scroll", () => {
+        let scrollTop = document.documentElement.scrollTop;
+        let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        let progress = (scrollTop / height) * 100;
+        document.getElementById("progress").style.width = progress + "%";
+        
+        // Back to top
+        document.getElementById("topBtn").style.display = scrollTop > 300 ? "block" : "none";
+    });
+
+    // Reveal sections
+    const sections = document.querySelectorAll("section");
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("show");
+            }
+        });
+    }, { threshold: 0.1 });
+
+    sections.forEach(sec => observer.observe(sec));
+
+    // Back to top
+    function goTop() {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+</script>
+
+</body>
+</html>
